@@ -1,15 +1,15 @@
 public class Task4 {
     public boolean isPalindrome(String string) {
-        if (string.length() <= 1) {
+        return isPalindrome(string, 0, string.length() - 1);
+    }
+
+    private boolean isPalindrome(String string, int leftPointer, int rightPointer) {
+        if (leftPointer >= rightPointer) {
             return true;
         }
 
-        char firstChar = string.charAt(0);
-        char lastChar = string.charAt(string.length() - 1);
-
-        string = string.substring(1, string.length() - 1);
-
-        return firstChar == lastChar && isPalindrome(string);
+        return string.charAt(leftPointer) == string.charAt(rightPointer)
+                && isPalindrome(string, leftPointer + 1, rightPointer - 1);
     }
 }
 
