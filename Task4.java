@@ -12,7 +12,10 @@ public class Task4 {
             return false;
         }
 
-        return isPalindrome(string, leftPointer + 1, rightPointer - 1);
+        leftPointer++;
+        rightPointer--;
+
+        return isPalindrome(string, leftPointer, rightPointer);
     }
 }
 
