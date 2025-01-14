@@ -8,8 +8,11 @@ public class Task4 {
             return true;
         }
 
-        return string.charAt(leftPointer) == string.charAt(rightPointer)
-                && isPalindrome(string, leftPointer + 1, rightPointer - 1);
+        if (string.charAt(leftPointer) != string.charAt(rightPointer)) {
+            return false;
+        }
+
+        return isPalindrome(string, leftPointer + 1, rightPointer - 1);
     }
 }
 
