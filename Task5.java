@@ -5,7 +5,7 @@ public class Task5 {
         printEvenElements(list, 0);
     }
 
-    private void printEvenElements(List<Integer> list, int index) {
+    private void printEvenElements(List<Integer> list, final int index) {
         if (index == list.size()) {
             return;
         }
@@ -14,8 +14,7 @@ public class Task5 {
             System.out.println(list.get(index));
         }
 
-        index++;
-        printEvenElements(list, index);
+        printEvenElements(list, index + 1);
     }
 }
 
