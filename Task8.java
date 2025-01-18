@@ -3,29 +3,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task8 {
-    public List<String> findAllFiles(String pathToDirectory) {
+    private static List<String> findAllFiles(String pathToDirectory) {
         List<String> files = new ArrayList<>();
-        findAllFiles(files, pathToDirectory);
-
-        return files;
-    }
-
-    private void findAllFiles(List<String> files, String pathToDirectory) {
         File directory = new File(pathToDirectory);
         File[] nestedFiles = directory.listFiles();
 
         if (nestedFiles == null) {
-            return;
+            return files;
         }
 
         for (File file: nestedFiles) {
-            if (!file.isDirectory()) {
-                files.add(file.getName());
+            if (file.isDirectory()) {
+                files.addAll(findAllFiles(file.getPath()));
                 continue;
             }
 
-            findAllFiles(files, file.getPath());
+            files.add(file.getName());
         }
+
+        return files;
     }
 }
 

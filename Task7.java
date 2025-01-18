@@ -6,14 +6,18 @@ public class Task7<T extends Comparable<T>> {
             return null;
         }
 
-        if (list.get(0).compareTo(list.get(1)) <= 0) {
-            return findSecondMax(list, 0, list.get(0), list.get(1));
+        T lesser = list.get(0);
+        T greater = list.get(1);
+        if (lesser.compareTo(greater) > 0) {
+            T swapTemp = lesser;
+            lesser = greater;
+            greater = swapTemp;
         }
 
-        return findSecondMax(list, 0, list.get(1), list.get(0));
+        return findSecondMaxRecursive(list, 0, lesser, greater);
     }
 
-    private T findSecondMax(List<T> list, final int index, T firstMax, T secondMax) {
+    private T findSecondMaxRecursive(List<T> list, final int index, T firstMax, T secondMax) {
         if (index == list.size()) {
             return secondMax;
         }
@@ -27,7 +31,7 @@ public class Task7<T extends Comparable<T>> {
             firstMax = list.get(index);
         }
 
-        return findSecondMax(list, index + 1, firstMax, secondMax);
+        return findSecondMaxRecursive(list, index + 1, firstMax, secondMax);
     }
 }
 
