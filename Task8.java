@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task8 {
-    private static List<String> findAllFiles(String pathToDirectory) {
+    public List<String> findAllFiles(String pathToDirectory) {
         List<String> files = new ArrayList<>();
         File directory = new File(pathToDirectory);
         File[] nestedFiles = directory.listFiles();
